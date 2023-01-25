@@ -1,5 +1,6 @@
 <x-layouts.mainLayout>
     <main class="h-screen flex flex-col items-center justify-center">
+        <x-layouts.logo />
         <form
             action="login"
             method="post"
@@ -16,11 +17,7 @@
                 name="password"
                 placeholder="Password"
             />
-
-            <button
-                type="submit"
-                class="text-sm bg-blue-200 p-2 rounded-md"
-            >Login</button>
+            <x-form.submit-button label="Login" />
         </form>
     </main>
 

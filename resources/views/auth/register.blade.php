@@ -1,7 +1,6 @@
 <x-layouts.mainLayout>
     <main class="h-screen flex flex-col items-center justify-center">
-
-        <h2>Register</h2>
+        <x-layouts.logo />
         <form
             action="register"
             method="post"
@@ -28,18 +27,8 @@
                 name="password_confirmation"
                 placeholder="Confirm password"
             />
-            <button
-                class="bg-blue-200 px-2 py-1 rounded-md w-16 text-sm"
-                type="submit"
-            >Submit</button>
+            <x-form.submit-button label="Register" />
         </form>
-
-        <div class="text-xs mt-6">
-            <a
-                class="bg-stone-100 p-2 rounded-md"
-                href="login"
-            >Login</a>
-        </div>
     </main>
     <script>
         let show_password = false;

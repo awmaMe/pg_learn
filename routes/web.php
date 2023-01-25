@@ -13,3 +13,11 @@ Route::view('register', 'auth.register');
 Route::post('register', [AuthController::class, 'register'])->name('register.post');
 
 Route::view('login', 'auth.login');
+Route::post('login', [AuthController::class, 'login'])->name('login.post');
+
+Route::middleware('auth')
+    ->name('auth.')
+    ->group(function () {
+        Route::view('dashboard', 'auth.dashboard')->name('dashboard');
+        Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+    });

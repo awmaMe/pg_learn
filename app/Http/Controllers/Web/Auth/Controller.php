@@ -19,6 +19,11 @@ class Controller extends BaseController
 
     public function login(LoginRequest $request)
     {
+        if (!auth()->attempt($request->validated())) {
+            return back()->with('flash-message', 'Invalid username/password');
+        }
+
+        return redirect()->route('auth.dashboard');
     }
 
     public function logout()
