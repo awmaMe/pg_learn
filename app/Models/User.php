@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Models\Master\Product;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -29,5 +30,10 @@ class User extends Authenticatable
     public function password(): Attribute
     {
         return Attribute::set(fn ($password) => bcrypt($password));
+    }
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class);
     }
 }

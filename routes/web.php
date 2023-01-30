@@ -2,6 +2,7 @@
 
 use App\Models\User;
 use App\Http\Controllers\Web\Auth\Controller as AuthController;
+use App\Http\Controllers\Web\Auth\ProductsController as UserProductsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -18,6 +19,10 @@ Route::post('login', [AuthController::class, 'login'])->name('login.post');
 Route::middleware('auth')
     ->name('auth.')
     ->group(function () {
-        Route::view('dashboard', 'auth.dashboard')->name('dashboard');
+        Route::view('home', 'auth.dashboard')->name('dashboard');
         Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
+        Route::prefix('user')->name('user.')->group(function () {
+            Route::post('products', [UserProductsController::class, 'store'])->name('products.store');
+        });
     });
