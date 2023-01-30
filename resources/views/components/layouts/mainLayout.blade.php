@@ -9,7 +9,7 @@
 
 <body>
     <nav class="">
-        <ul class="bg-sky-500 text-sm flex justify-end">
+        <ul class="bg-sky-500 lg:text-sm flex justify-end">
             @auth
                 <x-navigation.item
                     link="logout"
