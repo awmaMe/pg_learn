@@ -23,6 +23,6 @@ Route::middleware('auth')
         Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
         Route::prefix('user')->name('user.')->group(function () {
-            Route::post('products', [UserProductsController::class, 'store'])->name('products.store');
+            Route::resource('products', UserProductsController::class)->only('store', 'update', 'destroy');
         });
     });
