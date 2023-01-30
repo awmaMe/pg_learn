@@ -6,6 +6,7 @@
             placeholder="{{ $placeholder }}"
             class="p-2 text-sm focus:outline focus:outline-blue-300 rounded-sm w-full bg-gray-200"
             autocomplete="off"
+            value="{{ old($name) }}"
             readonly
             onfocus="this.removeAttribute('readonly')"
         >
