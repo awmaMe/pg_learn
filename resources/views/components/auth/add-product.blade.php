@@ -27,10 +27,3 @@
         </div>
     </form>
 </div>
-<script>
-    function toggleAddProductForm() {
-        let form = document.getElementById('add-product');
-        let form_classes = form.classList;
-        form_classes.contains('hidden') ? form_classes.remove('hidden') : form_classes.add('hidden');
-    }
-</script>
