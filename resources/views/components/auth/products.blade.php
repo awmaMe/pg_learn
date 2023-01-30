@@ -13,11 +13,11 @@
                     <td>
                         <div class="flex justify-evenly text-sm">
                             <button
-                                class="outline outline-1 max-w-min px-2 rounded-md"
+                                class="outline outline-1 outline-green-400 max-w-min px-2 rounded-md hover:bg-green-200"
                                 onclick="toggleEditForm({{ $product->id }})"
                             >Edit</button>
                             <button
-                                class="outline outline-1 max-w-min px-2 rounded-md"
+                                class="outline outline-1 outline-red-500 max-w-min px-2 rounded-md hover:bg-red-200"
                                 onclick="toggleDeleteForm({{ $product->id }})"
                             >Delete</button>
                         </div>
