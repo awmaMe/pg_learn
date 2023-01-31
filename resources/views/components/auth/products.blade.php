@@ -11,14 +11,14 @@
                 <tr>
                     <td class="py-2">{{ $product->name }}</td>
                     <td>
-                        <div class="flex justify-evenly text-sm">
+                        <div class="flex justify-end text-sm space-x-2">
                             <button
                                 class="outline outline-1 outline-green-400 max-w-min px-2 rounded-md hover:bg-green-200"
                                 onclick="toggleEditForm({{ $product->id }})"
                             >Edit</button>
                             <button
                                 class="outline outline-1 outline-red-500 max-w-min px-2 rounded-md hover:bg-red-200"
-                                onclick="toggleDeleteForm({{ $product->id }})"
+                                onclick="toggleDeleteForm({{ $product->id }}, {{ $product->name }})"
                             >Delete</button>
                         </div>
                     </td>
@@ -28,36 +28,9 @@
     </table>
 </div>
 
-<div
-    id="edit-product"
-    class="absolute top-1/3 bg-gray-100 w-1/2 p-4 right-1/2 translate-x-1/2 hidden"
->
-    <h1>Edit Product</h1>
-    <form
-        action="user/products/"
-        method="POST"
-        id="edit-product-form"
-    >
-        @csrf
-        @method('put')
-        <x-form.input
-            type="text"
-            name="name"
-            placeholder="Enter new product name"
-        />
-        <div class="flex justify-end text-sm mt-4">
-            <button
-                class="bg-sky-500 hover:bg-sky-600 hover:text-gray-200 p-2 rounded-md mr-4"
-                type="submit"
-            >Edit</button>
-            <button
-                class="bg-gray-200 hover:bg-gray-500 hover:text-gray-200 p-2 rounded-md"
-                onclick="toggleEditForm()"
-                type="button"
-            >Cancel</button>
-        </div>
-    </form>
-</div>
+<x-auth.products.edit-form />
+<x-auth.products.delete-form />
+
 <script>
     function toggleEditForm(product_id) {
         let edit_product = document.getElementById('edit-product');
@@ -65,8 +38,7 @@
         let edit_product_form = document.getElementById('edit-product-form');
 
         edit_product_classlist.contains('hidden') ? edit_product_classlist.remove('hidden') : edit_product_classlist
-            .add(
-                'hidden');
+            .add('hidden');
 
         if (!product_id) {
             edit_product_form.action = 'user/products/';
@@ -76,7 +48,20 @@
         edit_product_form.action += product_id;
     }
 
-    function toggleDeleteFrom(product_id) {
-        let delete_product = document.getElementById
+    function toggleDeleteForm(product_id, product_name) {
+        let delete_product = document.getElementById('delete-product');
+        let delete_product_form = document.getElementById('delete-product-form');
+
+        delete_product.classList.contains('hidden') ? delete_product.classList.remove('hidden') : delete_product
+            .classList.add('hidden');
+
+        if (!product_id) {
+            delete_product_form.action = 'user/products/';
+            delete_product.firstElementChild.textContent = 'Delete Product';
+            return;
+        }
+
+        delete_product_form.action += product_id;
+        delete_product.firstElementChild.textContent += ` ${product_name}`;
     }
 </script>
