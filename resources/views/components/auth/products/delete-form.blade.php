@@ -5,9 +5,10 @@
     <p class="mb-4">Delete <span x-text=" '\'' + selected_product_name + '\'?' " /></p>
     <form
         x-bind:action="url"
-        method="DELETE"
+        method="POST"
     >
         @csrf
+        @method('delete')
         <div class="flex justify-end space-x-10">
             <button
                 class="bg-red-800 hover:bg-red-700 px-4 py-2 rounded-md text-white"
