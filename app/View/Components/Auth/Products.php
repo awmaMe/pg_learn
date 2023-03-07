@@ -10,7 +10,7 @@ class Products extends Component
     public Collection $products;
     public function __construct()
     {
-        $this->products = request()->user()->products->sortBy('created_at');
+        $this->products = request()->user()->products->sortBy('id')->values();
     }
 
     /**

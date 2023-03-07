@@ -4,12 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Itenchisl</title>
+    <script
+        defer
+        src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
     @vite('resources/js/app.js')
 </head>
 
-<body>
+<body class="bg-gray-900 text-white">
     <nav class="">
-        <ul class="bg-sky-500 lg:text-sm flex justify-end">
+        <ul class="bg-slate-300 lg:text-sm flex justify-end text-black">
             @auth
                 <x-navigation.item
                     link="logout"
@@ -32,7 +36,7 @@
     @if (session()->has('flash-message'))
         <div
             id="flash-message"
-            class="absolute bottom-10 right-1/2 transform translate-x-1/2 text-sm bg-orange-200 p-2 rounded-md duration-200 transition ease-linear"
+            class="absolute bottom-10 right-1/2 transform translate-x-1/2 text-sm bg-orange-400 p-2 rounded-md duration-200 transition ease-linear text-black"
         >
             {{ session('flash-message') }}
             <script>
@@ -44,5 +48,11 @@
     @endif
 
 </body>
+
+<style>
+    [x-cloak] {
+        display: none !important;
+    }
+</style>
 
 </html>

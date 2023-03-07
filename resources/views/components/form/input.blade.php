@@ -1,4 +1,4 @@
-<div class="w-full flex flex-col justify-start">
+<div class="w-full flex flex-col justify-start text-black">
     <div class="w-full relative">
         <input
             type="{{ $type }}"
@@ -9,6 +9,7 @@
             value="{{ old($name) }}"
             readonly
             onfocus="this.removeAttribute('readonly')"
+            {{ $attributes }}
         >
         @if ($type == 'password')
             <i
