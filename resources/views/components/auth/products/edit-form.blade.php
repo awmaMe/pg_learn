@@ -1,14 +1,12 @@
 <div
     x-cloak
     x-show="show_edit_form"
-    id="edit-product"
     class="absolute top-1/3 bg-gray-300 w-1/2 p-4 right-1/2 translate-x-1/2 text-black"
 >
     <h1>Edit Product</h1>
     <form
         x-bind:action="url"
         method="POST"
-        id="edit-product-form"
     >
         @csrf
         @method('put')

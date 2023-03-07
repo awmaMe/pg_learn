@@ -2,10 +2,10 @@
     x-show="show_delete_form"
     class="absolute top-1/3 bg-gray-300 w-1/4 p-4 translate-x-1/2 right-1/2 text-black"
 >
-    <p class="mb-4">Delete <span x-text="${selected_product_name} klk" /></p>
+    <p class="mb-4">Delete <span x-text=" '\'' + selected_product_name + '\'?' " /></p>
     <form
-        ::action="url"
-        method="delete"
+        x-bind:action="url"
+        method="DELETE"
     >
         @csrf
         <div class="flex justify-end space-x-10">
