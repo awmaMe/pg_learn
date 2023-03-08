@@ -17,7 +17,7 @@ class UserProductSeeder extends Seeder
     public function run()
     {
         $products = Product::all();
-        foreach (User::all() as $user) {
+        foreach (User::query()->where('is_admin', false)->get() as $user) {
             $user->products()->sync($products->random(rand(3, 6)));
         }
     }

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
@@ -15,6 +16,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(10)->create();
+        User::query()->create(['name' => 'Admin', 'username' => 'admin', 'password' => 'password', 'is_admin' => true]);
+        User::factory(10)->sequence(fn (Sequence $sequence) => ['username' => 'user_' . $sequence->index + 1])->create();
     }
 }
