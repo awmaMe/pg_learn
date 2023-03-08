@@ -13,27 +13,35 @@
 
 <body class="bg-gray-900 text-white">
     <nav class="mb-4">
-        <ul class="bg-slate-300 lg:text-sm flex justify-end text-black">
-            @auth
+        <div class="flex justify-between bg-slate-700 lg:text-sm">
+            <ul class="flex">
                 <x-navigation.item
-                    link="settings"
-                    label="Settings"
+                    link="home"
+                    label="Home"
                 />
-                <x-navigation.item
-                    link="logout"
-                    label="Log Out"
-                />
-            @else
-                <x-navigation.item
-                    link="register"
-                    label="Register"
-                />
-                <x-navigation.item
-                    link="login"
-                    label="Log In"
-                />
-            @endauth
-        </ul>
+            </ul>
+            <ul class="flex justify-end">
+                @auth
+                    <x-navigation.item
+                        link="settings"
+                        label="Settings"
+                    />
+                    <x-navigation.item
+                        link="logout"
+                        label="Log Out"
+                    />
+                @else
+                    <x-navigation.item
+                        link="register"
+                        label="Register"
+                    />
+                    <x-navigation.item
+                        link="login"
+                        label="Log In"
+                    />
+                @endauth
+            </ul>
+        </div>
     </nav>
     {{ $slot }}
 
