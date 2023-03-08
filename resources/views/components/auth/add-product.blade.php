@@ -1,6 +1,6 @@
 <div
-    id="add-product"
-    class="absolute w-3/4 top-16 bg-gray-300 p-4 shadow-md hidden"
+    x-show="show_add_form"
+    class="absolute w-3/4 top-16 bg-gray-300 p-4 shadow-md text-black"
 >
     <h4 class="py-2">Add Product</h4>
     <form
@@ -21,7 +21,7 @@
             >Add</button>
             <button
                 class="bg-gray-300 hover:bg-gray-400 rounded-md"
-                onclick="toggleAddProductForm('add-product')"
+                x-on:click="show_add_form = !show_add_form"
                 type="button"
             >Cancel</button>
         </div>
