@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web\Auth;
 use App\Http\Controllers\Controller as BaseController;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
+use App\Http\Requests\Auth\UpdateDetailsRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -24,6 +25,13 @@ class Controller extends BaseController
         }
 
         return redirect()->route('auth.dashboard');
+    }
+
+    public function update_details(UpdateDetailsRequest $request)
+    {
+        $request->user()->update($request->validated());
+
+        return redirect()->back()->with(['flash-message' => 'User details have been updated', 'flash-message-type' => 'positive']);
     }
 
     public function logout()

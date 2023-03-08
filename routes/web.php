@@ -25,5 +25,6 @@ Route::middleware('auth')
 
         Route::prefix('user')->name('user.')->group(function () {
             Route::resource('products', UserProductsController::class)->only('store', 'update', 'destroy');
+            Route::patch('details', [AuthController::class, 'update_details'])->name('update-details');
         });
     });
