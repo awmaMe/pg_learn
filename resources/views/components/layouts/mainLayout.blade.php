@@ -12,7 +12,7 @@
 </head>
 
 <body class="bg-gray-900 text-white">
-    <nav class="">
+    <nav class="mb-4">
         <ul class="bg-slate-300 lg:text-sm flex justify-end text-black">
             @auth
                 <x-navigation.item

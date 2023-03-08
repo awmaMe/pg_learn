@@ -12,26 +12,11 @@
                 name="username"
                 placeholder="Username"
             />
-            <x-form.input
-                type="password"
+            <x-form.password-input
                 name="password"
                 placeholder="Password"
             />
             <x-form.submit-button label="Login" />
         </form>
     </main>
-
-    <script>
-        let show_password = false;
-
-        function toggleShowPassword(element, name) {
-            show_password = !show_password;
-            let input_element = element.previousElementSibling;
-            let icon_img = element.firstElementChild;
-
-            input_element.type = show_password ? 'text' : 'password';
-            icon_img.src = show_password ? 'https://api.iconify.design/mdi:eye.svg' :
-                'https://api.iconify.design/mdi:eye-off.svg';
-        }
-    </script>
 </x-layouts.mainLayout>

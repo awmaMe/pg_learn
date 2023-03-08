@@ -17,36 +17,15 @@
                 name="username"
                 placeholder="Enter username"
             />
-            <x-form.input
-                type="password"
+            <x-form.password-input
                 name="password"
                 placeholder="Enter password"
             />
-            <x-form.input
-                type="password"
+            <x-form.password-input
                 name="password_confirmation"
                 placeholder="Confirm password"
             />
             <x-form.submit-button label="Register" />
         </form>
     </main>
-    <script>
-        let show_password = false;
-        let show_password_confirmation = false;
-
-        function toggleShowPassword(element, name) {
-            if (name == 'password') {
-                show_password = !show_password;
-            } else
-                show_password_confirmation = !show_password_confirmation;
-
-            let show = name == 'password' ? show_password : show_password_confirmation;
-            let input_element = element.previousElementSibling;
-            let icon_img = element.firstElementChild;
-
-            input_element.type = show ? 'text' : 'password';
-            icon_img.src = show ? 'https://api.iconify.design/mdi:eye.svg' :
-                'https://api.iconify.design/mdi:eye-off.svg';
-        }
-    </script>
 </x-layouts.mainLayout>
