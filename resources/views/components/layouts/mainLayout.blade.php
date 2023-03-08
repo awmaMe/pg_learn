@@ -60,9 +60,8 @@
                 'duration-200',
                 'transition',
                 'ease-linear',
-                'text-black',
-                'bg-orange-300' => session('flash-message-type') == 'warning',
-                'bg-blue-300' => session('flash-message-type') == 'positive',
+                'bg-orange-400 text-gray-900' => session('flash-message-type') == 'warning',
+                'bg-blue-600' => session('flash-message-type') == 'positive',
             ])
         >
             {{ session('flash-message') }}

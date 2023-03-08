@@ -29,11 +29,11 @@
                         <td>
                             <div class="flex justify-end text-sm space-x-2">
                                 <button
-                                    class="outline outline-1 outline-green-400 max-w-min px-2 rounded-md hover:bg-green-200"
+                                    class="outline outline-1 outline-green-400 max-w-min px-2 rounded-md hover:bg-green-200 hover:text-black"
                                     x-on:click="toggleForm('edit', {{ $product->id }}, '{{ $product->name }}')"
                                 >Edit</button>
                                 <button
-                                    class="outline outline-1 outline-red-500 max-w-min px-2 rounded-md hover:bg-red-200"
+                                    class="outline outline-1 outline-red-500 max-w-min px-2 rounded-md hover:bg-red-200 hover:text-black"
                                     x-on:click="toggleForm('delete', {{ $product->id }}, '{{ $product->name }}')"
                                 >Delete</button>
                             </div>

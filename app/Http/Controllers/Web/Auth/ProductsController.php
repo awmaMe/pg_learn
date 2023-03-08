@@ -24,7 +24,7 @@ class ProductsController extends Controller
 
         $product->update($attributes);
 
-        return redirect()->route('auth.dashboard');
+        return redirect()->route('auth.dashboard')->with(['flash-message' => 'Product has been updated', 'flash-message-type' => 'positive']);
     }
 
     public function destroy(Product $product)
