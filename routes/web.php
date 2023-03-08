@@ -20,6 +20,7 @@ Route::middleware('auth')
     ->name('auth.')
     ->group(function () {
         Route::view('home', 'auth.dashboard')->name('dashboard');
+        Route::view('settings', 'auth.settings')->name('settings');
         Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
         Route::prefix('user')->name('user.')->group(function () {

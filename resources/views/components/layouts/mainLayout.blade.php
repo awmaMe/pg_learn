@@ -16,6 +16,10 @@
         <ul class="bg-slate-300 lg:text-sm flex justify-end text-black">
             @auth
                 <x-navigation.item
+                    link="settings"
+                    label="Settings"
+                />
+                <x-navigation.item
                     link="logout"
                     label="Log Out"
                 />
@@ -36,7 +40,22 @@
     @if (session()->has('flash-message'))
         <div
             id="flash-message"
-            class="absolute bottom-10 right-1/2 transform translate-x-1/2 text-sm bg-orange-400 p-2 rounded-md duration-200 transition ease-linear text-black"
+            @class([
+                'absolute',
+                'bottom-10',
+                'right-1/2',
+                'transform',
+                'translate-x-1/2',
+                'text-sm',
+                'p-2',
+                'rounded-md',
+                'duration-200',
+                'transition',
+                'ease-linear',
+                'text-black',
+                'bg-orange-300' => session('flash-message-type') == 'warning',
+                'bg-blue-300' => session('flash-message-type') == 'positive',
+            ])
         >
             {{ session('flash-message') }}
             <script>

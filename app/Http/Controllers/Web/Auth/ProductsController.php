@@ -15,7 +15,7 @@ class ProductsController extends Controller
 
         $request->user()->products()->firstOrCreate($attributes);
 
-        return redirect()->route('auth.dashboard');
+        return redirect()->route('auth.dashboard')->with(['flash-message' => 'Product has been added', 'flash-message-type' => 'positive']);
     }
 
     public function update(Request $request, Product $product)
