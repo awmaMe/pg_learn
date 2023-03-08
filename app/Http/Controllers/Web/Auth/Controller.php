@@ -31,7 +31,7 @@ class Controller extends BaseController
     {
         $request->user()->update($request->validated());
 
-        return redirect()->back()->with(['flash-message' => 'User details have been updated', 'flash-message-type' => 'positive']);
+        return redirect()->back()->with(['flash-message' => 'User details have been updated', 'flash-message-type' => 'info']);
     }
 
     public function logout()

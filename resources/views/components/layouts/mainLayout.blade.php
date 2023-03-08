@@ -50,25 +50,31 @@
             id="flash-message"
             @class([
                 'absolute',
-                'bottom-10',
+                'bottom-0',
                 'right-1/2',
                 'transform',
                 'translate-x-1/2',
                 'text-sm',
                 'p-2',
                 'rounded-md',
-                'duration-200',
+                'duration-500',
                 'transition',
                 'ease-linear',
                 'bg-orange-400 text-gray-900' => session('flash-message-type') == 'warning',
-                'bg-blue-600' => session('flash-message-type') == 'positive',
+                'bg-blue-600' => session('flash-message-type') == 'info',
             ])
         >
             {{ session('flash-message') }}
             <script>
                 setTimeout(() => {
-                    document.getElementById("flash-message").remove();
-                }, 3000);
+                    let el = document.getElementById("flash-message");
+                    // el.classList.add('translate-y-10', 'ease-out', 'opacity-0');
+                    el.addEventListener('animationend', () => {
+                        el.remove();
+                    })
+                    el.classList.add('animate-toast');
+
+                }, 2000);
             </script>
         </div>
     @endif
@@ -78,6 +84,21 @@
 <style>
     [x-cloak] {
         display: none !important;
+    }
+
+    .animate-toast {
+        animation: toast 1s forwards;
+    }
+
+    @keyframes toast {
+        0% {
+            transform: translateY(-2rem);
+        }
+
+        100% {
+            transform: translateY(0);
+            display: none;
+        }
     }
 </style>
 

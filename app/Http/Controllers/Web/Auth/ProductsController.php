@@ -15,7 +15,7 @@ class ProductsController extends Controller
 
         $request->user()->products()->firstOrCreate($attributes);
 
-        return redirect()->route('auth.dashboard')->with(['flash-message' => 'Product has been added', 'flash-message-type' => 'positive']);
+        return redirect()->route('auth.dashboard')->with(['flash-message' => 'Product has been added', 'flash-message-type' => 'info']);
     }
 
     public function update(Request $request, Product $product)
@@ -24,7 +24,7 @@ class ProductsController extends Controller
 
         $product->update($attributes);
 
-        return redirect()->route('auth.dashboard')->with(['flash-message' => 'Product has been updated', 'flash-message-type' => 'positive']);
+        return redirect()->route('auth.dashboard')->with(['flash-message' => 'Product has been updated', 'flash-message-type' => 'info']);
     }
 
     public function destroy(Product $product)
