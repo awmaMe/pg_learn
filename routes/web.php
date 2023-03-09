@@ -6,7 +6,10 @@ use App\Http\Controllers\Web\Auth\ProductsController as UserProductsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    $users = User::all();
+    $users = User::query()
+        ->where('is_admin', false)
+        ->orderBy('created_at')->orderBy('id', 'asc')
+        ->get();
     return view('welcome', compact('users'));
 })->name('home');
 
