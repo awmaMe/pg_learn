@@ -77,26 +77,6 @@
     [x-cloak] {
         display: none !important;
     }
-
-    /* .animate-toast {
-        animation: toast 3s ease-out;
-    }
-
-    @keyframes toast {
-
-        0%,
-        100% {
-            transform: translate(50%, 0);
-            opacity: 0;
-        }
-
-        20%,
-        50%,
-        70% {
-            transform: translate(50%, -4rem);
-            opacity: 1;
-        }
-    } */
 </style>
 
 </html>
