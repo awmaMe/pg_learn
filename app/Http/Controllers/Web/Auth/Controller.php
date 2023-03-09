@@ -7,7 +7,6 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Requests\Auth\UpdateDetailsRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class Controller extends BaseController
 {
@@ -21,7 +20,7 @@ class Controller extends BaseController
     public function login(LoginRequest $request)
     {
         if (!auth()->attempt($request->validated())) {
-            return back()->with(['flash-message' => 'Invalid username/password', 'flash-message-type' => 'warning']);
+            return back()->with(flash_message('Invalid username/password', 'warning'));
         }
 
         return redirect()->route('auth.dashboard');
@@ -31,7 +30,7 @@ class Controller extends BaseController
     {
         $request->user()->update($request->validated());
 
-        return redirect()->back()->with(['flash-message' => 'User details have been updated', 'flash-message-type' => 'info']);
+        return redirect()->back()->with(flash_message('User details have been updated'));
     }
 
     public function logout()

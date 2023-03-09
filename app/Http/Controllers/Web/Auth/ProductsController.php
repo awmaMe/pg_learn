@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Web\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Master\Product;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
@@ -15,7 +14,7 @@ class ProductsController extends Controller
 
         $request->user()->products()->firstOrCreate($attributes);
 
-        return redirect()->route('auth.dashboard')->with(['flash-message' => 'Product has been added', 'flash-message-type' => 'info']);
+        return redirect()->route('auth.dashboard')->with(flash_message('Product has been added'));
     }
 
     public function update(Request $request, Product $product)
@@ -24,13 +23,13 @@ class ProductsController extends Controller
 
         $product->update($attributes);
 
-        return redirect()->route('auth.dashboard')->with(['flash-message' => 'Product has been updated', 'flash-message-type' => 'info']);
+        return redirect()->route('auth.dashboard')->with(flash_message('Product has been updated'));
     }
 
     public function destroy(Product $product)
     {
         $product->delete();
 
-        return redirect()->route('auth.dashboard');
+        return redirect()->route('auth.dashboard')->with(flash_message('Product has been deleted'));
     }
 }
