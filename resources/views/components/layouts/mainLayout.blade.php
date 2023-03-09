@@ -78,8 +78,8 @@
         display: none !important;
     }
 
-    .animate-toast {
-        animation: toast 3s forwards;
+    /* .animate-toast {
+        animation: toast 3s ease-out;
     }
 
     @keyframes toast {
@@ -90,12 +90,13 @@
             opacity: 0;
         }
 
+        20%,
         50%,
-        80% {
+        70% {
             transform: translate(50%, -4rem);
             opacity: 1;
         }
-    }
+    } */
 </style>
 
 </html>
