@@ -12,9 +12,10 @@ class Controller extends BaseController
 {
     public function register(RegisterRequest $request)
     {
-        User::query()->create($request->validated());
+        $new_user = User::query()->create($request->validated());
+        auth()->loginUsingId($new_user->id);
 
-        return redirect()->route('home');
+        return redirect()->route('auth.dashboard')->with(flash_message("Welcome {$new_user->name}"));
     }
 
     public function login(LoginRequest $request)
