@@ -52,29 +52,21 @@
                 'absolute',
                 'bottom-0',
                 'right-1/2',
-                'transform',
-                'translate-x-1/2',
                 'text-sm',
                 'p-2',
                 'rounded-md',
-                'duration-500',
-                'transition',
-                'ease-linear',
+                'animate-toast',
+                'mx-auto',
                 'bg-orange-400 text-gray-900' => session('flash-message-type') == 'warning',
                 'bg-blue-600' => session('flash-message-type') == 'info',
             ])
         >
             {{ session('flash-message') }}
             <script>
-                setTimeout(() => {
-                    let el = document.getElementById("flash-message");
-                    // el.classList.add('translate-y-10', 'ease-out', 'opacity-0');
-                    el.addEventListener('animationend', () => {
-                        el.remove();
-                    })
-                    el.classList.add('animate-toast');
-
-                }, 2000);
+                let el = document.getElementById("flash-message");
+                el.addEventListener('animationend', () => {
+                    el.remove();
+                })
             </script>
         </div>
     @endif
@@ -87,17 +79,21 @@
     }
 
     .animate-toast {
-        animation: toast 1s forwards;
+        animation: toast 3s forwards;
     }
 
     @keyframes toast {
-        0% {
-            transform: translateY(-2rem);
+
+        0%,
+        100% {
+            transform: translate(50%, 0);
+            opacity: 0;
         }
 
-        100% {
-            transform: translateY(0);
-            display: none;
+        50%,
+        80% {
+            transform: translate(50%, -4rem);
+            opacity: 1;
         }
     }
 </style>
