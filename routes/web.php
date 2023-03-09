@@ -30,4 +30,8 @@ Route::middleware('auth')
             Route::resource('products', UserProductsController::class)->only('store', 'update', 'destroy');
             Route::patch('details', [AuthController::class, 'update_details'])->name('update-details');
         });
+
+        Route::prefix('admin')->name('admin.')->group(function () {
+            Route::view('dashboard', 'admin.dashboard');
+        });
     });

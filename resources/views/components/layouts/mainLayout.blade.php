@@ -16,27 +16,27 @@
         <div class="flex justify-between bg-slate-700 lg:text-sm">
             <ul class="flex">
                 <x-navigation.item
-                    link="home"
+                    :link="request()->user()?->is_admin ? '\\admin\\dashboard' : '\\home'"
                     label="Home"
                 />
             </ul>
             <ul class="flex justify-end">
                 @auth
                     <x-navigation.item
-                        link="settings"
+                        link="/settings"
                         label="Settings"
                     />
                     <x-navigation.item
-                        link="logout"
+                        link="/logout"
                         label="Log Out"
                     />
                 @else
                     <x-navigation.item
-                        link="register"
+                        link="/register"
                         label="Register"
                     />
                     <x-navigation.item
-                        link="login"
+                        link="/login"
                         label="Log In"
                     />
                 @endauth

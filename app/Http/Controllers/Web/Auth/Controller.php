@@ -24,7 +24,10 @@ class Controller extends BaseController
             return back()->with(flash_message('Invalid username/password', 'warning'));
         }
 
-        return redirect()->route('auth.dashboard');
+        if (auth()->user()->is_admin)
+            return redirect()->route('admin.dashboard');
+
+        return redirect()->route('auth.dashboard')->with(flash_message("Welcome back {$request->user()->name}"));
     }
 
     public function update_details(UpdateDetailsRequest $request)
